@@ -41,6 +41,7 @@
 #include "mb_m.h"
 #include "mbport.h"
 #include "sdkconfig.h"
+#include "mbc_serial_master.h"  
 
 static const char *TAG = "MBM_TIMER";
 
@@ -124,7 +125,7 @@ void vMBMasterPortTimersConvertDelayEnable(void)
 
 void vMBMasterPortTimersRespondTimeoutEnable(void)
 {
-    uint64_t xToutUs = (MB_MASTER_TIMEOUT_MS_RESPOND * 1000);
+    uint64_t xToutUs = (mb_master_timeout_ * 1000);
 
     vMBMasterSetCurTimerMode(MB_TMODE_RESPOND_TIMEOUT);
     ESP_LOGD(MB_PORT_TAG,"%s Respond enable timeout.", __func__);
